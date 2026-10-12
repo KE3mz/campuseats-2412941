@@ -9,5 +9,7 @@ Answer each question in 1–3 sentences, in your own words.
     React sees that a capital letter signifies a custom component rather than another normal line of code
 
 3. What does a fragment <>...</> do, and why not just use a <div>?
+    Fragments group elements together withoud adding extra nodes which prevents unnecessary wrapper elements from breaking CSS layouts
 
 4. Name one benefit of splitting the UI into small components.
+    It allows for code reusability
