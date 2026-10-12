@@ -5,11 +5,17 @@ import VendorCard from './components/VendorCard.jsx'
 import MenuList from './components/MenuList.jsx'
 import Footer from './components/Footer.jsx'
 function App() {
+ const [cart, setCart] = useState([])
  const [selectedVendorId, setSelectedVendorId] = useState(vendors[0].id)
  const selectedVendor = vendors.find((v) => v.id === selectedVendorId)
+
+ function handleAddToCart(item) {
+ setCart((prevCart) => [...prevCart, item]) // a NEW array, never cart.push()
+ }
+
  return (
  <>
- <Header />
+ <Header cartCount={cart.length} />
  <main className="container">
  <section>
  <h2 className="section-title">Choose a vendor</h2>
@@ -26,7 +32,7 @@ function App() {
  </section>
  <section>
  <h2 className="section-title">Menu: {selectedVendor.name}</h2>
- <MenuList items={selectedVendor.menu} />
+ <MenuList items={selectedVendor.menu} onAdd={handleAddToCart} />
  </section>
  </main>
  <Footer />
