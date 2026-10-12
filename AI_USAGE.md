@@ -10,7 +10,7 @@ Add a new section every week, before you tag. Did not use AI? Write "None" under
 - One thing the AI got wrong and how I fixed it:
 
 ## Week 2
-- Tool(s):
-- What I asked for:
-- What I kept, changed or rejected, and why:
-- One thing the AI got wrong and how I fixed it:
+- Tool(s): Gemini
+- What I asked for: How the code works and what links each file with each other to reference in app.jsx(the supposed parent)
+- What I kept, changed or rejected, and why: none
+- One thing the AI got wrong and how I fixed it: none
