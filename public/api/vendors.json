@@ -1,0 +1,134 @@
+[
+ {
+ "id": "kerabu-shack",
+ "name": "Kerabu Shack",
+ "location": "Mahallah Uthman, Block B",
+ "openHours": "9:00 am - 10:00 pm",
+ "isOpen": true,
+ "menu": [
+        { 
+            "id": "ks-1", 
+            "name": "Nasi Kerabu Ayam", 
+            "description": "Blue rice, salad and coconut flakes with fried chicken", 
+            "price": 6.5, 
+            "category": "Rice", 
+            "available": true 
+        },
+        { 
+            "id": "ks-2", 
+            "name": "Nasi Kerabu Lemak Bakar", 
+            "description": "Blue rice, salad and coconut flakes with grilled beef fat", 
+            "price": 8, 
+            "category": "Rice", 
+            "available": true 
+        },
+        { 
+            "id": "ks-3", 
+            "name": "Nasi Kerabu Ikan Tongkol", 
+            "description": "Blue rice, salad and coconut flakes, served with rich tuna curry", 
+            "price": 7.5, 
+            "category": "Rice", 
+            "available": true 
+        },
+        { 
+            "id": "ks-4", 
+            "name": "Nasi Kerabu Daging Bakar", 
+            "description": "Blue rice, salad and coconut flakes served with grilled marinated beef", 
+            "price": 7.5, 
+            "category": "Rice", 
+            "available": true 
+        },
+        { 
+            "id": "ks-5", 
+            "name": "Solok Lada", 
+            "description": "Green chili stuffed with a mixture of grated coconut and minced fish", 
+            "price": 2.5, 
+            "category": "Sides", 
+            "available": true 
+        },
+        { 
+            "id": "ks-6", 
+            "name": "Keropok Lekor", 
+            "description": "Deep-fried fish crackers served with sweet chili dipping sauce", 
+            "price": 4.0, 
+            "category": "Sides", 
+            "available": true 
+        },
+        { 
+            "id": "ks-7", 
+            "name": "Teh Beng", 
+            "description": "Black tea mixed with condensed milk on ice", 
+            "price": 2.5, 
+            "category": "Drinks", 
+            "available": false 
+        },
+        { 
+            "id": "ks-8", 
+            "name": "Sirap Bandung Selasih", 
+            "description": "Rose syrup mixed with evaporated milk and basil seeds on ice", 
+            "price": 3.0, 
+            "category": "Drinks", 
+            "available": true 
+        }
+    ]
+ },
+ {
+    "id": "2419467-nasi-kukus",
+    "name": "nasi kukus",
+    "location": "Jalan Rabung, Bukit Jelutong, Shah Alam, Selangor",
+    "openHours": "10:00 am - 10:00 pm",
+    "isOpen": true,
+    "menu": [
+        { 
+            "id": "2419467-nk-1", 
+            "name": "Nasi Kukus Ayam", 
+            "description": "steamed rice, spiced fried chicken, curry gravy, and sambal belacan", 
+            "price": 6.5, 
+            "category": "Rice", 
+            "available": true 
+        },
+        { 
+            "id": "2419467-nk-2", 
+            "name": "Nasi Kukus Daging Kerutuk", 
+            "description": "steamed rice served with rich beef kerutuk gravy and sambal belacan ", 
+            "price": 7.5, 
+            "category": "Rice", 
+            "available": false 
+        },
+        { 
+            "id": "2419467-nk-3", 
+            "name": "Teh o Ais", 
+            "description": "ice tea", 
+            "price": 1.5, 
+            "category": "Drinks", 
+            "available": true 
+        }
+    ]
+ },
+ {
+    "id": "2411639-asam-pedas-fisherman",
+    "name": "Asam Pedas Fisherman",
+    "location": "Parit Raja, Batu Pahat, Johor",
+    "openHours": "11:00 am - 4:00 pm",
+    "isOpen": true,
+    "menu": [
+        {
+            "id": "2411639-ap-1", 
+            "name": "Set Pari", 
+            "description": "A delicious set of stingray asam pedas with rice", 
+            "price": 14.99, 
+            "category": "Set", 
+            "available": true
+        },
+        {
+            "id": "2411639-ap-2", 
+            "name": "Set Merah", 
+            "description": "A delicious set of red snapper asam pedas with rice", 
+            "price": 12.99, 
+            "category": "Set", 
+            "available": true
+        }
+    ]
+}
+ 
+]
