@@ -179,3 +179,28 @@ start; }
 .field-error { color: #b3261e; font-size: 0.85rem; margin: 0; }
 .error { border-left: 4px solid #b3261e; }
 
+/*Category buttons in MenuList for personal task week 3
+/* The default look for your filter buttons */
+.category-filters .btn {
+  font: inherit;
+  color: inherit;
+  background-color: var(--green-light); /* Keep it clean like a card */
+  border: 2px solid transparent; /* Invisible border to prevent jumping */
+  border-radius: 8px; /* Adjust this to match your card's border-radius if needed */
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+/* Hover effect: matches your button.card:hover */
+.category-filters .btn:hover {
+  border-color: var(--green);
+}
+
+/* Active state: Make the border stay green when the category is selected */
+.category-filters .btn.active {
+  border-color: var(--green);
+  background-color: var(--green); /* Optional: fills the button in */
+  color: #ffffff; /* Optional: adjust text color so it's readable on the green */
+}
+/*End of Category buttons in MenuList for personal task week 3
