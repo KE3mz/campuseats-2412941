@@ -1,21 +1,22 @@
 import { useState } from 'react'
 import MenuItemCard from './MenuItemCard.jsx'
+import { useCart } from '../hooks/useCart.js'
 
-function MenuList({ items, onAdd }) {
-    // 1. Track the currently active category
+function MenuList({ items }) {
+    // 1. Consume addToCart directly from Context
+    const { addToCart } = useCart()
+
+    // 2. Track the currently active category
     const [activeCategory, setActiveCategory] = useState('All')
 
-
-    // DEBUGGING: This will print your items to the browser console so you can see them!
-    console.log("Menu Items Data:", items);
-    if (items.length === 0) {
+    if (!items || items.length === 0) {
         return <p className="muted">No items on this menu yet.</p>
     }
 
-    // 2. Extract unique categories (e.g., ['All', 'Food', 'Drink'])
+    // 3. Extract unique categories
     const categories = ['All', ...new Set(items.map((item) => item.category))]
 
-    // 3. Filter items based on what is selected
+    // 4. Filter items based on active category selection
     const displayedItems = activeCategory === 'All'
         ? items
         : items.filter((item) => item.category === activeCategory)
@@ -39,7 +40,11 @@ function MenuList({ items, onAdd }) {
             {/* Filtered Grid of Items */}
             <div className="grid">
                 {displayedItems.map((item) => (
-                    <MenuItemCard key={item.id} item={item} onAdd={onAdd} />
+                    <MenuItemCard 
+                        key={item.id} 
+                        item={item} 
+                        onAdd={addToCart} 
+                    />
                 ))}
             </div>
         </div>
