@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link } from 'react-router'
 import { useVendors } from '../hooks/useVendors'
 import MenuList from '../components/MenuList'
 import {Loading} from '../components/Status'

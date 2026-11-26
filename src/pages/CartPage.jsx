@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router'
 import { useCart } from '../hooks/useCart'
 import CartItem from '../components/CartItem'
 import CheckoutForm from '../components/CheckoutForm'

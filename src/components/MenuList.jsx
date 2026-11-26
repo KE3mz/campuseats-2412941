@@ -1,12 +1,15 @@
-import { useSearchParams } from 'react-router-dom'
 import MenuItemCard from './MenuItemCard.jsx'
 import { useCart } from '../hooks/useCart.js'
+import { useAuth } from '../hooks/useAuth.js'
+import { useLocalStorage } from '../hooks/useLocalStorage.js'
 
 function MenuList({ items }) {
   const { addToCart } = useCart()
+  const { user } = useAuth()
 
-  const [searchParams, setSearchParams] = useSearchParams()
-  const activeCategory = searchParams.get('cat') || 'All'
+  // Signed-in: 'ce-category-<uid>'; Guest: null (defaults to 'All', does not save)
+  const key = user ? `ce-category-${user.uid}` : null
+  const [savedCategory, setSavedCategory] = useLocalStorage(key, 'All')
 
   if (!items || items.length === 0) {
     return <p className="muted">No items on this menu yet.</p>
@@ -14,19 +17,9 @@ function MenuList({ items }) {
 
   const categories = ['All', ...new Set(items.map((item) => item.category))]
 
-  // 4. Update the URL when a user clicks a category button
-  const handleCategorySelect = (category) => {
-    if (category === 'All') {
-      // Remove ?cat= query param when 'All' is selected
-      searchParams.delete('cat')
-      setSearchParams(searchParams)
-    } else {
-      // Set ?cat=CategoryName in the URL
-      setSearchParams({ cat: category })
-    }
-  }
+  // Fall back to 'All' if the user's saved category isn't on this vendor's menu
+  const activeCategory = categories.includes(savedCategory) ? savedCategory : 'All'
 
-  // 5. Filter items based on active URL category
   const displayedItems =
     activeCategory === 'All'
       ? items
@@ -34,21 +27,19 @@ function MenuList({ items }) {
 
   return (
     <div className="menu-section">
-      {/* Category Filter Buttons */}
       <div className="category-filters">
         {categories.map((category) => (
           <button
             key={category}
             type="button"
             className={activeCategory === category ? 'btn active' : 'btn'}
-            onClick={() => handleCategorySelect(category)}
+            onClick={() => setSavedCategory(category)}
           >
             {category}
           </button>
         ))}
       </div>
 
-      {/* Filtered Grid of Items */}
       <div className="grid">
         {displayedItems.map((item) => (
           <MenuItemCard
