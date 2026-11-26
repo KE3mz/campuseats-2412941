@@ -1,36 +1,74 @@
-import { useParams, Link } from 'react-router'
-import { useVendors } from '../hooks/useVendors'
-import MenuList from '../components/MenuList'
-import {Loading} from '../components/Status'
-import {ErrorMessage} from '../components/Status'
+import { useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router'
+import { useVendor } from '../hooks/useVendor.js'
+import { useAuth } from '../hooks/useAuth.js'
+import { useLocalStorage } from '../hooks/useLocalStorage.js'
+import MenuList from '../components/MenuList.jsx'
+import { Loading, ErrorMessage } from '../components/Status.jsx'
 
-export default function VendorPage() {
+function VendorPage() {
   const { id } = useParams()
-  const { vendors, loading, error, reload } = useVendors()
+  const { user } = useAuth()
+
+  const storageKey = user ? `ce-category-${user.uid}` : null
+  const [savedCategory, setSavedCategory] = useLocalStorage(storageKey, 'All')
+  const [activeCategory, setActiveCategory] = useState(savedCategory)
+
+  useEffect(() => {
+    setActiveCategory(savedCategory)
+  }, [id, savedCategory])
+
+  const { vendor, menu, categories, menuLoading, loading, error } = useVendor(
+    id,
+    activeCategory,
+  )
+
+  // Revert to 'All' if this vendor doesn't have the saved category
+  useEffect(() => {
+    if (!menuLoading && activeCategory !== 'All' && menu.length === 0) {
+      setActiveCategory('All')
+    }
+  }, [menuLoading, activeCategory, menu.length])
+
+  function handleSelectCategory(category) {
+    setActiveCategory(category)
+    setSavedCategory(category)
+  }
 
   if (loading) return <Loading />
-  if (error) return <ErrorMessage message={error} onRetry={reload} />
-
-  // Match vendor ID (comparing as strings or numbers)
-  const vendor = vendors.find((v) => String(v.id) === String(id))
-
-  if (!vendor) {
+  if (error)
     return (
-      <section>
-        <h2 className="section-title">Vendor not found</h2>
-        <p className="muted">
-          There is no vendor called “{id}”. <Link to="/">Back to vendors</Link>
-        </p>
-      </section>
+      <ErrorMessage
+        message={error}
+        onRetry={() => window.location.reload()}
+      />
     )
-  }
+  if (!vendor)
+    return (
+      <p>
+        Vendor not found. <Link to="/">Back to vendors</Link>
+      </p>
+    )
+
+  const items = menu.map((item) => ({ ...item, vendorName: vendor.name }))
 
   return (
     <section>
-      <p><Link to="/">← All vendors</Link></p>
+      <p>
+        <Link to="/">← All vendors</Link>
+      </p>
       <h2 className="section-title">{vendor.name}</h2>
-      <p className="muted">{vendor.location} · {vendor.openHours}</p>
-      <MenuList items={vendor.menu} />
+      <p className="muted">
+        {vendor.location} · {vendor.openHours}
+      </p>
+      <MenuList
+        items={items}
+        categories={categories}
+        activeCategory={activeCategory}
+        onSelectCategory={handleSelectCategory}
+      />
     </section>
   )
 }
+
+export default VendorPage

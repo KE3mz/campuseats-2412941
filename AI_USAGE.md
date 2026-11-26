@@ -32,3 +32,18 @@ Add a new section every week, before you tag. Did not use AI? Write "None" under
 3. To update the category filters according t B4: personal feature which is 1: Filter by category
 - What I kept, changed or rejected, and why: I used Gemini before obtaining the lab supplement to help me continue building the website. I compared the two and found ou that it had the same structure but Gemini dit not know the class names we utilize so it made its own which poorly affects the visual of the web. Gemini used react-router-dom which is built on top of react-router for web browsers as it provides HTML/DOM-aware components. Since it was practically the same thing but better, I decided to keep it as it did not hinder the existing code
 - One thing the AI got wrong and how I fixed it: Gemini did not use the wrapper line for item and quantity making some of the code provided unusable until I either wrapped it back into line or unwrap it to item and quantity and i chose the former.
+
+## Week 5
+- Tool(s): Gemini
+- What I asked for:
+1. To understand how the code works
+2. To troubleshoot errors found and missed or redundant codes
+3. How to implement the personal feature
+
+## Week 6
+- Tool(s): Gemini
+- What I asked for:
+1. To understand how the code works especially the TODOs which helps me write down my reflections
+2. To troubleshoot errors found and missed or redundant codes
+3. How to implement the personal feature
+4. To help with the criteria of the screenshots for M2 

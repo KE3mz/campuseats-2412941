@@ -212,4 +212,15 @@ start; }
   background-color: var(--green); /* Optional: fills the button in */
   color: #ffffff; /* Optional: adjust text color so it's readable on the green */
 }
-/*End of Category buttons in MenuList for personal task week 3
+/*End of Category buttons in MenuList for personal task week 3*/
+
+.status-steps { display: flex; gap: 0.4rem; list-style: none; padding: 0; flex-wrap:
+wrap; }
+.status-steps li { padding: 0.15rem 0.6rem; border-radius: 999px; background:
+#eef0f3; font-size: 0.8rem; }
+.status-steps li.done { background: var(--green); color: #fff; }
+
+.order-actions { display: flex; flex-wrap: wrap; gap: 0.5rem;
+ align-items: center; margin-top: 0.6rem; }
+.order-actions input { width: auto; }
+.btn-small { padding: 0.3rem 0.8rem; font-size: 0.85rem; }
